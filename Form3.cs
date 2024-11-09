@@ -28,16 +28,35 @@ namespace StudentManagementSystem
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            txtFillName.Visible = true;
-            txtFillLastName.Visible = true;
-            cmbFillCourse.Visible = true;
-            numFillAge.Visible = true;
+            if (dgvStudents.SelectedRows.Count > 0)
+            {
+                txtFillName.Visible = true;
+                txtFillLastName.Visible = true;
+                cmbFillCourse.Visible = true;
+                numFillAge.Visible = true;
 
-            btnChanges.Visible = true;
-            btnDelete.Visible = false;
-            btnRefresh.Visible = false;
+                btnChanges.Visible = true;
+                btnDelete.Visible = false;
+                btnRefresh.Visible = false;
 
+                string oldFirstName = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString();
+                string oldLastName = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString();
+                string oldAge = dgvStudents.SelectedRows[0].Cells["Age"].Value.ToString();
+                string oldCourse = dgvStudents.SelectedRows[0].Cells["Course"].Value.ToString();
 
+                // Construct the old record
+       
+
+                // Get updated data from the input fields
+               txtFillName.Text =oldFirstName;
+               txtFillLastName.Text=oldLastName;
+               numFillAge.Value=int.Parse(oldAge);
+                cmbFillCourse.Text= oldCourse;
+            }
+            else
+            {
+                MessageBox.Show("Please select a student to update");
+            }
 
 
         }
@@ -95,6 +114,33 @@ namespace StudentManagementSystem
             txtFillLastName.Visible = false;
             cmbFillCourse.Visible = false;
             numFillAge.Visible = false;
+
+            // Retrieve the current details of the selected student from the DataGridView
+            string oldFirstName = dgvStudents.SelectedRows[0].Cells["FirstName"].Value.ToString();
+            string oldLastName = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString();
+            string oldAge = dgvStudents.SelectedRows[0].Cells["Age"].Value.ToString();
+            string oldCourse = dgvStudents.SelectedRows[0].Cells["Course"].Value.ToString();
+
+            // Construct the old record
+            string oldRecord = $"{oldFirstName},{oldLastName},{oldAge},{oldCourse}";
+
+            // Get updated data from the input fields
+            string newFirstName = txtFillName.Text;
+            string newLastName = txtFillLastName.Text;
+            string newAge = numFillAge.Value.ToString();
+            string newCourse = cmbFillCourse.Text;
+
+            // Construct the new record
+            string newRecord = $"{newFirstName},{newLastName},{newAge},{newCourse}";
+
+            // Update the DataGridView with the new values
+            dgvStudents.SelectedRows[0].Cells["FirstName"].Value = newFirstName;
+            dgvStudents.SelectedRows[0].Cells["LastName"].Value = newLastName;
+            dgvStudents.SelectedRows[0].Cells["Age"].Value = newAge;
+            dgvStudents.SelectedRows[0].Cells["Course"].Value = newCourse;
+
+            // Update the text file
+            handler.FileUpdate(oldRecord, newRecord);
 
             dgvStudents.Columns.Clear();
             dgvStudents.Columns.Add("FirstName", "First Name");

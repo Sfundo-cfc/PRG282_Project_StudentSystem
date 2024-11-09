@@ -132,25 +132,25 @@ namespace StudentManagementSystem
             // Validation checks
             if (string.IsNullOrWhiteSpace(newFirstName))
             {
-                MessageBox.Show("First name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("First name is required.", "Validation Error, Try Aggain", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtFillName.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(newLastName))
             {
-                MessageBox.Show("Last name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Last name is required.", "Validation Error, Try Aggain", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtFillLastName.Focus();
                 return;
             }
             if (newAge < 18 || newAge > 60)
             {
-                MessageBox.Show("Invalid age for a university student. Age must be between 18 and 59.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Invalid age for a university student. Age must be between 18 and 59.", "Validation Error, Try Aggain", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 numFillAge.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(newCourse))
             {
-                MessageBox.Show("Please select a course.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a course.", "Validation Error, Try Aggain", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cmbFillCourse.Focus();
                 return;
             }

@@ -38,6 +38,8 @@ namespace StudentManagementSystem
             btnRefresh.Visible = false;
 
 
+
+
         }
         private void frmManage_Load(object sender, EventArgs e)
         {
@@ -78,7 +80,7 @@ namespace StudentManagementSystem
 
         }
 
-  
+
 
 
 
@@ -93,6 +95,24 @@ namespace StudentManagementSystem
             txtFillLastName.Visible = false;
             cmbFillCourse.Visible = false;
             numFillAge.Visible = false;
+
+            dgvStudents.Columns.Clear();
+            dgvStudents.Columns.Add("FirstName", "First Name");
+            dgvStudents.Columns.Add("LastName", "Last Name");
+            dgvStudents.Columns.Add("Age", "Age");
+            dgvStudents.Columns.Add("Course", "Course");
+
+            foreach (var item in handler.GetAllStudents())
+            {
+                // Assuming item is formatted as "FirstName,LastName,Age,Course"
+                string[] fields = item.Split(',');
+
+                if (fields.Length == 4)
+                {
+                    dgvStudents.Rows.Add(fields[0], fields[1], fields[2], fields[3]);
+                }
+                // dgvStudents.Rows.Add(item);
+            }
 
         }
 
@@ -119,6 +139,24 @@ namespace StudentManagementSystem
             else
             {
                 MessageBox.Show("Please select a student to delete.");
+            }
+
+            dgvStudents.Columns.Clear();
+            dgvStudents.Columns.Add("FirstName", "First Name");
+            dgvStudents.Columns.Add("LastName", "Last Name");
+            dgvStudents.Columns.Add("Age", "Age");
+            dgvStudents.Columns.Add("Course", "Course");
+
+            foreach (var item in handler.GetAllStudents())
+            {
+                // Assuming item is formatted as "FirstName,LastName,Age,Course"
+                string[] fields = item.Split(',');
+
+                if (fields.Length == 4)
+                {
+                    dgvStudents.Rows.Add(fields[0], fields[1], fields[2], fields[3]);
+                }
+                // dgvStudents.Rows.Add(item);
             }
         }
 

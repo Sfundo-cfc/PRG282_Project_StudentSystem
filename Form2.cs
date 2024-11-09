@@ -38,62 +38,54 @@ namespace PRG282_Project_StudentSystem
             string surname = txtSurname.Text;
             int age = (int)numAge.Value;
 
-
+            // Validate all required fields
             if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(surname) && string.IsNullOrWhiteSpace(cmbCourse.Text))
             {
-                MessageBox.Show("All fields are required, please fill in", "Empty fileds", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                MessageBox.Show("All fields are required, please fill in", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lsbStudentDetails.Items.Clear();
             }
-            else
-
-            if (string.IsNullOrWhiteSpace(name))
+            else if (string.IsNullOrWhiteSpace(name))
             {
                 MessageBox.Show("Name is required.", "Please enter name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtName.Focus();
-
+                lsbStudentDetails.Items.Clear();
             }
-            else
-            if (string.IsNullOrWhiteSpace(surname))
+            else if (string.IsNullOrWhiteSpace(surname))
             {
                 MessageBox.Show("Surname is required.", "Please enter surname", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSurname.Focus();
+                lsbStudentDetails.Items.Clear();
             }
-
-            // Validate age (must be a positive integer)
-            else
-            if (age < 18 || age > 60)
+            else if (age < 18 || age > 60)
             {
-                MessageBox.Show("Invalid age for univeristy student, age but between 18 and 59!");
+                MessageBox.Show("Invalid age for university student, age must be between 18 and 59!");
+                lsbStudentDetails.Items.Clear();
             }
-
-            // Validate gender (must be selected from combo box)
-            else
-            if (cmbCourse.SelectedIndex == -1)
+            else if (cmbCourse.SelectedIndex == -1)
             {
-                MessageBox.Show("Please select a cousrse.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a course.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cmbCourse.Focus();
-
+                lsbStudentDetails.Items.Clear();
             }
             else
             {
+                // All validations passed, proceed to add the student details
                 string course = cmbCourse.SelectedItem.ToString();
+                string studentDetails = $"{name}, {surname}, {age}, {course}";
+
+                // Add to list box
+                lsbStudentDetails.Items.Add(studentDetails);
+
+                // Clear input fields after adding
+                txtName.Clear();
+                txtSurname.Clear();
+                numAge.Value = 0;
+                cmbCourse.SelectedIndex = -1;
             }
 
 
 
-
-
-            string studentDetails = $"{name},{surname},{age},{cmbCourse.Text}";
-
-            // Add to list box
-            lsbStudentDetails.Items.Add(studentDetails);
-
-            // Clear input fields after adding
-            txtSurname.Clear();
-            numAge.Value = 0;
-            cmbCourse.SelectedIndex = -1;
-        
-    }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -106,14 +98,14 @@ namespace PRG282_Project_StudentSystem
             string filePath = "students.txt";
 
             // Convert list box items to a list of strings
-            List<string> linesToAppend = new List<string>();
+            List<string> StudentToAdd = new List<string>();
             foreach (var item in lsbStudentDetails.Items)
             {
-                linesToAppend.Add(item.ToString());
+                StudentToAdd.Add(item.ToString());
             }
 
             // Append lines to file
-            File.AppendAllLines(filePath, linesToAppend);
+            File.AppendAllLines(filePath, StudentToAdd);
 
             MessageBox.Show("Details saved to students.txt successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

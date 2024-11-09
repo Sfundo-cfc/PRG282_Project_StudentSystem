@@ -23,5 +23,5 @@ namespace PRG282_Project_StudentSystem.DataLayer
                  this.Course = course;
             
              }
-                }
+    }
 }

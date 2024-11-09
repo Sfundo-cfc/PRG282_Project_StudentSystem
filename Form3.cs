@@ -44,7 +44,6 @@ namespace StudentManagementSystem
                 string oldAge = dgvStudents.SelectedRows[0].Cells["Age"].Value.ToString();
                 string oldCourse = dgvStudents.SelectedRows[0].Cells["Course"].Value.ToString();
 
-                // Construct the old record
        
 
                 // Get updated data from the input fields

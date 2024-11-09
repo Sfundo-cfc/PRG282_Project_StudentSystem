@@ -144,6 +144,7 @@
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete Student";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnRefresh
             // 
@@ -155,6 +156,7 @@
             this.btnRefresh.TabIndex = 7;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnUpdate
             // 
@@ -166,6 +168,7 @@
             this.btnUpdate.TabIndex = 6;
             this.btnUpdate.Text = "Update Student";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // dgvStudents
             // 
@@ -175,11 +178,11 @@
             this.LastName,
             this.Age,
             this.Course});
-            this.dgvStudents.Location = new System.Drawing.Point(12, 81);
+            this.dgvStudents.Location = new System.Drawing.Point(49, 85);
             this.dgvStudents.Name = "dgvStudents";
             this.dgvStudents.RowHeadersWidth = 51;
             this.dgvStudents.RowTemplate.Height = 24;
-            this.dgvStudents.Size = new System.Drawing.Size(627, 270);
+            this.dgvStudents.Size = new System.Drawing.Size(554, 270);
             this.dgvStudents.TabIndex = 5;
             // 
             // FirstName
@@ -220,6 +223,7 @@
             this.btnChanges.TabIndex = 15;
             this.btnChanges.Text = "Save Changes";
             this.btnChanges.UseVisualStyleBackColor = false;
+            this.btnChanges.Click += new System.EventHandler(this.btnChanges_Click);
             // 
             // frmManage
             // 

@@ -79,6 +79,7 @@
             this.btnAddToList.TabIndex = 10;
             this.btnAddToList.Text = "Add to list";
             this.btnAddToList.UseVisualStyleBackColor = false;
+            this.btnAddToList.Click += new System.EventHandler(this.btnAddToList_Click);
             // 
             // label4
             // 
@@ -120,6 +121,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Abort To Menu";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lsbStudentDetails
             // 

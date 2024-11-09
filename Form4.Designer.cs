@@ -82,6 +82,7 @@
             this.btnSaveSummary.TabIndex = 1;
             this.btnSaveSummary.Text = "Save Summary";
             this.btnSaveSummary.UseVisualStyleBackColor = false;
+            this.btnSaveSummary.Click += new System.EventHandler(this.btnSaveSummary_Click);
             // 
             // frmSummary
             // 

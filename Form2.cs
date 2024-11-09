@@ -16,5 +16,15 @@ namespace PRG282_Project_StudentSystem
         {
             InitializeComponent();
         }
+
+        private void btnAddToList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace PRG282_Project_StudentSystem
+﻿namespace StudentManagementSystem
 {
     partial class frmManage
     {
@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "frmManage";
             this.Text = "Form3";
+            this.Load += new System.EventHandler(this.frmManage_Load);
             this.ResumeLayout(false);
 
         }

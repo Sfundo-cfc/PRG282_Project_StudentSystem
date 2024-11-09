@@ -1,6 +1,6 @@
 ﻿namespace PRG282_Project_StudentSystem
 {
-    partial class Form1
+    partial class frmManage
     {
         /// <summary>
         /// Required designer variable.
@@ -88,6 +88,7 @@
             this.btnMenuOption.TabIndex = 1;
             this.btnMenuOption.Text = "SELECT OPTION >>>";
             this.btnMenuOption.UseVisualStyleBackColor = true;
+            this.btnMenuOption.Click += new System.EventHandler(this.btnMenuOption_Click);
             // 
             // grbMenu
             // 
@@ -134,14 +135,15 @@
             this.rdbAdd.Text = "Add Students";
             this.rdbAdd.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // frmManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel4);
-            this.Name = "Form1";
+            this.Name = "frmManage";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.grbMenu.ResumeLayout(false);

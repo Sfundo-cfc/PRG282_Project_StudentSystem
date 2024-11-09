@@ -35,9 +35,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAbort = new System.Windows.Forms.Button();
             this.lsbStudentDetails = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -111,17 +111,17 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Course";
             // 
-            // button2
+            // btnAbort
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(349, 335);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 49);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Abort To Menu";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnAbort.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAbort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbort.Location = new System.Drawing.Point(349, 335);
+            this.btnAbort.Name = "btnAbort";
+            this.btnAbort.Size = new System.Drawing.Size(126, 49);
+            this.btnAbort.TabIndex = 6;
+            this.btnAbort.Text = "Abort To Menu";
+            this.btnAbort.UseVisualStyleBackColor = false;
+            this.btnAbort.Click += new System.EventHandler(this.button2_Click);
             // 
             // lsbStudentDetails
             // 
@@ -132,16 +132,17 @@
             this.lsbStudentDetails.Size = new System.Drawing.Size(279, 422);
             this.lsbStudentDetails.TabIndex = 5;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(176, 335);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 49);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Save Details";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSave.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(176, 335);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(125, 49);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "Save Details";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -165,10 +166,10 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnAbort);
             this.panel1.Controls.Add(this.lsbStudentDetails);
             this.panel1.Controls.Add(this.txtSurname);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -227,9 +228,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAbort;
         private System.Windows.Forms.ListBox lsbStudentDetails;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;

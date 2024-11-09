@@ -55,7 +55,7 @@ namespace PRG282_Project_StudentSystem
             {
                 double Avg = totalAge / studentCount;
                 string date = DateTime.Now.ToString("D");
-                lblSummary.Text = $"There are {studentCount} records of students with an average age of {Avg}\n {studentCount}: Students ||\t {Avg} \n {date} ";
+                lblSummary.Text = $"There are {studentCount} records of students with an average age of {Avg}\n {studentCount}: Students ||\t Average Age: {Avg} \n {date} ";
             }
             catch (Exception ex)
             {

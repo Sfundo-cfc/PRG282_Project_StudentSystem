@@ -126,8 +126,34 @@ namespace StudentManagementSystem
             // Get updated data from the input fields
             string newFirstName = txtFillName.Text;
             string newLastName = txtFillLastName.Text;
-            string newAge = numFillAge.Value.ToString();
+            int newAge = (int)numFillAge.Value;
             string newCourse = cmbFillCourse.Text;
+
+            // Validation checks
+            if (string.IsNullOrWhiteSpace(newFirstName))
+            {
+                MessageBox.Show("First name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFillName.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(newLastName))
+            {
+                MessageBox.Show("Last name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFillLastName.Focus();
+                return;
+            }
+            if (newAge < 18 || newAge > 60)
+            {
+                MessageBox.Show("Invalid age for a university student. Age must be between 18 and 59.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                numFillAge.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(newCourse))
+            {
+                MessageBox.Show("Please select a course.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbFillCourse.Focus();
+                return;
+            }
 
             // Construct the new record
             string newRecord = $"{newFirstName},{newLastName},{newAge},{newCourse}";
@@ -135,7 +161,7 @@ namespace StudentManagementSystem
             // Update the DataGridView with the new values
             dgvStudents.SelectedRows[0].Cells["FirstName"].Value = newFirstName;
             dgvStudents.SelectedRows[0].Cells["LastName"].Value = newLastName;
-            dgvStudents.SelectedRows[0].Cells["Age"].Value = newAge;
+            dgvStudents.SelectedRows[0].Cells["Age"].Value = newAge.ToString();
             dgvStudents.SelectedRows[0].Cells["Course"].Value = newCourse;
 
             // Update the text file
@@ -158,8 +184,8 @@ namespace StudentManagementSystem
                 }
                 // dgvStudents.Rows.Add(item);
             }
-
         }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {

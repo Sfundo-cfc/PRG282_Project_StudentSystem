@@ -72,7 +72,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.lblDate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblDate.Location = new System.Drawing.Point(502, 29);

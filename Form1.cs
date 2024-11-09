@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentManagementSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace PRG282_Project_StudentSystem
 {
-    public partial class frmManage : Form
+    public partial class frmMenu : Form
     {
-        public frmManage()
+        public frmMenu()
         {
             InitializeComponent();
         }
@@ -49,15 +50,29 @@ namespace PRG282_Project_StudentSystem
             }
             else
             {
-                MessageBox.Show("* Menu option not selected!\n   Please make a choice");
+                MessageBox.Show("*Please note. Menu option not selected!\n   Please make a choice");
             }
 
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            lblDate.Text = "Date: " + DateTime.Now.ToString("D") + "  ";
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
         }
-    
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

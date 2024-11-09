@@ -16,7 +16,7 @@ namespace PRG282_Project_StudentSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmManage());
+            Application.Run(new frmMenu());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRG282_Project_StudentSystem.BusinessLogic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,6 +40,27 @@ namespace PRG282_Project_StudentSystem
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+        private void frmSummary_Load(object sender, EventArgs e)
+        {
+            Business business = new Business();
+            business.CountAge();
+
+            (int studentCount, int totalAge) = business.CountAge();
+            MessageBox.Show($"Total Students: {studentCount}, with Total Age: {totalAge}");
+
+            try
+            {
+                double Avg = totalAge / studentCount;
+                string date = DateTime.Now.ToString("D");
+                lblSummary.Text = $"There are {studentCount} records of students with an average age of {Avg}\n {studentCount}: Students ||\t {Avg} \n {date} ";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("NO RECORDS, so no Summary to produce!");
             }
         }
     }

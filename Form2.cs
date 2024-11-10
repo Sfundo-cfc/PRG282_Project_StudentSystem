@@ -46,13 +46,13 @@ namespace PRG282_Project_StudentSystem
             }
             else if (string.IsNullOrWhiteSpace(name))
             {
-                MessageBox.Show("Name is a mandotory field", "Please enter name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Name is a required field", "Please enter name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtName.Focus();
               
             }
             else if (string.IsNullOrWhiteSpace(surname))
             {
-                MessageBox.Show("Surname is a mandotory field", "Please enter surname", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Surname is a required field", "Please enter surname", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSurname.Focus();
 
             }

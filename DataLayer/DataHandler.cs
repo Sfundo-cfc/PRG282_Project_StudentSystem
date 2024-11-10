@@ -16,13 +16,13 @@ namespace PRG282_Project_StudentSystem.DataLayer
         string filePath = "students.txt";
         public void AddNewStudent(string studentDetails)
         {
-            File.AppendAllText(filePath, studentDetails + "\n"); // adds all text in file
+            File.AppendAllText(filePath, studentDetails + "\n"); // adds all text in file.
             Console.WriteLine("Students successfully added to the records");
 
         }
-        public List<string> GetAllStudents() // returns the string list from the txt
+        public List<string> GetAllStudents() // returns the string list from the txt.
         {
-            try // to avoid breaks
+            try // to avoid breaks.
             {
                 return File.ReadAllLines(filePath).ToList();
             }
@@ -31,8 +31,8 @@ namespace PRG282_Project_StudentSystem.DataLayer
                 MessageBox.Show(ex.Message);
 
                 List<string> result = new List<string>();
-                result.Add("Cannot gathher all the students at this moment!");
-                return result;// problem so retuns empty list of results 
+                result.Add("Cannot gather all the students at this moment!");
+                return result;// problem so retuns empty list of results.
 
             }
 
@@ -42,21 +42,21 @@ namespace PRG282_Project_StudentSystem.DataLayer
         {
             try
             {
-                // prompt for user confirmation before deleting
+                // prompt for user confirmation before deleting.
                 DialogResult result = MessageBox.Show($"Are you sure you want to delete {fullStudentDetail} record?", "Confirm delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
 
-                if (result == DialogResult.Yes) //test for yes from user
+                if (result == DialogResult.Yes) //test for yes from user.
                 {
-                    // Read all lines from the text file
+                    // Read all lines from the text file.
                     List<string> students = File.ReadAllLines(filePath).ToList();
 
-                    // Check if the full student detail exists in the list
+                    // Check if the full student detail exists in the list.
                     if (students.Contains(fullStudentDetail))
                     {
-                        students.Remove(fullStudentDetail); // Remove the exact match
+                        students.Remove(fullStudentDetail); // Remove the exact match.
 
-                        // Rewrite the updated list to the file
+                        // Rewrite the updated list to the file.
                         File.WriteAllLines(filePath, students);
                         MessageBox.Show("Student record deleted successfully.");
                     }
@@ -81,16 +81,16 @@ namespace PRG282_Project_StudentSystem.DataLayer
         {
             try
             {  
-                List<string> students = File.ReadAllLines(filePath).ToList();// Reads all students from the text file into a list
+                List<string> students = File.ReadAllLines(filePath).ToList();// Reads all students from the text file into a list.
 
                
-                int index = students.IndexOf(oldRecord);  // Find the index of the old student record
+                int index = students.IndexOf(oldRecord);  // Find the index of the old student record.
 
                 if (index != -1)
                 {
-                    students[index] = newRecord; // Replace the old record with the new record at the index specified
+                    students[index] = newRecord; // Replace the old record with the new record at the index specified.
 
-                    // Write the updated list back to the text file
+                    // Write the updated list back to the text file.
                     File.WriteAllLines(filePath, students);
                     MessageBox.Show("Student record updated successfully.");
                 }
@@ -101,7 +101,7 @@ namespace PRG282_Project_StudentSystem.DataLayer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while updating the student: " + ex.Message);
+                MessageBox.Show("An error occurred while updating student: " + ex.Message);
             }
         }
 

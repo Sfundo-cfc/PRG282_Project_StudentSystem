@@ -71,12 +71,12 @@ namespace PRG282_Project_StudentSystem
             {
                 // If validations passed then proceeds to add the student details
                 string course = cmbCourse.SelectedItem.ToString();
-                string studentDetails = $"{name}, {surname}, {age}, {course}"; // formats the data to be comma separated
+                string studentDetails = $"{name}, {surname}, {age}, {course}"; // formats the data to be comma separated.
 
-                // Adding the student to list box
+                // Adding the student to list box.
                 lsbStudentDetails.Items.Add(studentDetails);
 
-                // Clear input fields after adding to allow another student entry
+                // Clear input fields after adding to allow another student entry.
                 txtName.Clear();
                 txtSurname.Clear();
                 numAge.Value = 0;
@@ -89,7 +89,7 @@ namespace PRG282_Project_StudentSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (lsbStudentDetails.Items.Count == 0) // testing for items/ lines in the list boxes
+            if (lsbStudentDetails.Items.Count == 0) // testing for items/ lines in the list boxes.
             {
                 MessageBox.Show("No details to save.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -104,10 +104,10 @@ namespace PRG282_Project_StudentSystem
                 StudentToAdd.Add(item.ToString());
             }
 
-            // Append lines of the lisrt to file as a list of strings not overwritting
+            // Append lines of the list to file as a list of strings not overwriting
             File.AppendAllLines(filePath, StudentToAdd);
 
-            MessageBox.Show("Details saved to students.txt successfully.", "Success"); //mesage to user infroming them of added student
+            MessageBox.Show("Details saved to students.txt successfully.", "Success"); //mesage to user infroming them of added student.
 
             // Clear the list box after saving
             lsbStudentDetails.Items.Clear();

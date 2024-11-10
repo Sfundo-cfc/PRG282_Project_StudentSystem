@@ -14,6 +14,7 @@ namespace PRG282_Project_StudentSystem.BusinessLogic
         public (int studentCount, int totalAge) CountAge()
         {
             int studentCount = 0;
+            
             int totalAge = 0;
 
             try // avoid any errors

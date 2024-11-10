@@ -78,6 +78,7 @@ namespace StudentManagementSystem
                 }
                 // dgvStudents.Rows.Add(item); displays one column with all the data 
             }
+            btnChanges.Visible = false;
         }
 
 

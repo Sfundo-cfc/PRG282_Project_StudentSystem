@@ -25,7 +25,7 @@ namespace PRG282_Project_StudentSystem
             {
                 this.Hide();
                 frmAddStudent frmAddStudent = new frmAddStudent();
-                frmAddStudent.ShowDialog();// just so the user forced to inteereact with 1 form at a time
+                frmAddStudent.ShowDialog();// user only interacts with one form at a time
                 this.Show();
 
 

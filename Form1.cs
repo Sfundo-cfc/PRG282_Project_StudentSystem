@@ -25,7 +25,7 @@ namespace PRG282_Project_StudentSystem
             {
                 this.Hide();
                 frmAddStudent frmAddStudent = new frmAddStudent();
-                frmAddStudent.ShowDialog();
+                frmAddStudent.ShowDialog();// just so the user forced to inteereact with 1 form at a time
                 this.Show();
 
 
@@ -57,7 +57,7 @@ namespace PRG282_Project_StudentSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            lblDate.Text = "Date: " + DateTime.Now.ToString("D") + "  ";
+            lblDate.Text = "Date: " + DateTime.Now.ToString("D") + "  ";//Loads the current full date 
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -21,7 +21,7 @@ namespace PRG282_Project_StudentSystem
 
      private void frmAddStudent_Load(object sender, EventArgs e)
      {
-         lsbStudentDetails.Items.Clear();
+         lsbStudentDetails.Items.Clear(); //clears anything that might be in the listbox
      }
 
 
@@ -34,31 +34,31 @@ namespace PRG282_Project_StudentSystem
 
         private void btnAddToList_Click(object sender, EventArgs e)
         {
-            string name = txtName.Text;
+            string name = txtName.Text; // stroring user input in output boxes
             string surname = txtSurname.Text;
             int age = (int)numAge.Value;
 
-            // Validate all required fields
+            // Validate all required output boxes
             if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(surname) && string.IsNullOrWhiteSpace(cmbCourse.Text))
             {
-                MessageBox.Show("All fields are required, please fill in", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("All fields are required, please fill in", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Warning); // shows an error message warning the user 
                 lsbStudentDetails.Items.Clear();
             }
             else if (string.IsNullOrWhiteSpace(name))
             {
-                MessageBox.Show("Name is required.", "Please enter name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Name is a mandotory field", "Please enter name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtName.Focus();
                 lsbStudentDetails.Items.Clear();
             }
             else if (string.IsNullOrWhiteSpace(surname))
             {
-                MessageBox.Show("Surname is required.", "Please enter surname", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Surname is a mandotory field", "Please enter surname", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSurname.Focus();
                 lsbStudentDetails.Items.Clear();
             }
             else if (age < 18 || age > 60)
             {
-                MessageBox.Show("Invalid age for university student, age must be between 18 and 59!");
+                MessageBox.Show("Invalid age for a university student, age must be between 18 and 59!");
                 lsbStudentDetails.Items.Clear();
             }
             else if (cmbCourse.SelectedIndex == -1)
@@ -69,14 +69,14 @@ namespace PRG282_Project_StudentSystem
             }
             else
             {
-                // All validations passed, proceed to add the student details
+                // All validations passed then proceeds to add the student details
                 string course = cmbCourse.SelectedItem.ToString();
-                string studentDetails = $"{name}, {surname}, {age}, {course}";
+                string studentDetails = $"{name}, {surname}, {age}, {course}"; // formats the data to be comma separated
 
-                // Add to list box
+                // Adding the student to list box
                 lsbStudentDetails.Items.Add(studentDetails);
 
-                // Clear input fields after adding
+                // Clear input fields after adding to allow another student entry
                 txtName.Clear();
                 txtSurname.Clear();
                 numAge.Value = 0;
@@ -89,7 +89,7 @@ namespace PRG282_Project_StudentSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (lsbStudentDetails.Items.Count == 0)
+            if (lsbStudentDetails.Items.Count == 0) // testing for items/ lines in the list boxes
             {
                 MessageBox.Show("No details to save.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -104,10 +104,10 @@ namespace PRG282_Project_StudentSystem
                 StudentToAdd.Add(item.ToString());
             }
 
-            // Append lines to file
+            // Append lines of the lisrt to file as a list of strings not overwritting
             File.AppendAllLines(filePath, StudentToAdd);
 
-            MessageBox.Show("Details saved to students.txt successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Details saved to students.txt successfully.", "Success"); //mesage to user infroming them of added student
 
             // Clear the list box after saving
             lsbStudentDetails.Items.Clear();

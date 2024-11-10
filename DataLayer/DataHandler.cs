@@ -38,8 +38,8 @@ namespace PRG282_Project_StudentSystem.DataLayer
 
 
         }
-        public void DeleteStudentRecord(string fullStudentDetail)
-        {
+    public void DeleteStudentRecord(string fullStudentDetail)
+    {
             try
             {
                 // prompt for user confirmation before deleting
@@ -64,18 +64,18 @@ namespace PRG282_Project_StudentSystem.DataLayer
                     {
                         MessageBox.Show("Student not found in the file.");
                     }
+                 }
+                else
+                {
+                     MessageBox.Show("Delete aborted!");
                 }
-                else 
-                { 
-                    MessageBox.Show("Delete aborted!");
-                }
-            }
+             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while removing the student: " + ex.Message);
             }
 
-        }
+    }
 
         public void FileUpdate(string oldRecord, string newRecord)
         {

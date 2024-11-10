@@ -16,9 +16,9 @@ namespace PRG282_Project_StudentSystem.BusinessLogic
             int studentCount = 0;
             int totalAge = 0;
 
-            try
+            try // avoid any errors
             {
-                if (!File.Exists(filePath))
+                if (!File.Exists(filePath)) // testing for path 
                 {
                     MessageBox.Show("File not found.");
 
@@ -30,22 +30,22 @@ namespace PRG282_Project_StudentSystem.BusinessLogic
 
                 foreach (string line in studentLines)
                 {
-                    string[] fields = line.Split(',');
+                    string[] fields = line.Split(','); //uses comma to split the line of student data and store as array 
 
-                    if (fields.Length >= 3 && int.TryParse(fields[2], out int age))
+                    if (fields.Length >= 3 && int.TryParse(fields[2], out int age)) //gets the age at index 2
                     {
-                        // Increment the student count and add age to totalAge
-                        studentCount++;
-                        totalAge += age;
+                       
+                        studentCount++;  // Increments the student count 
+                        totalAge += age; //add age to totalAge
                     }
                 }
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Error accessing file: {ex.Message}");
             }
 
-            return (studentCount, totalAge);
+            return (studentCount, totalAge); // will still return the unassigned variables .. was a problem
         }
 
 

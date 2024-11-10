@@ -61,5 +61,10 @@ namespace PRG282_Project_StudentSystem
                 MessageBox.Show("NO RECORDS, so no Summary to produce!");
             }
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

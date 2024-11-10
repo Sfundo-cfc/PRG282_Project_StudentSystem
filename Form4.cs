@@ -1,5 +1,6 @@
 ﻿using PRG282_Project_StudentSystem.BusinessLogic;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,41 +22,38 @@ namespace PRG282_Project_StudentSystem
 
         private void btnSaveSummary_Click(object sender, EventArgs e)
         {
-            string summaryFilePath = "summary.txt"; // Define the file path for Summary.txt
+            string summaryFilePath = "summary.txt"; // file path for Summary.txt  stored at bin to all anyone to access without fixed path
 
             try
             {
-                // Retrieve text from the label
-                string labelText = lblSummary.Text; // Replace myLabel with the actual label's name
+               
+                string labelSummary = lblSummary.Text;    // get the summary text from the label
 
-                // Write the label text to Summary.txt (overwrites the file if it exists)
-                File.AppendAllText(summaryFilePath, labelText);
+
+                File.AppendAllText(summaryFilePath, labelSummary); // Writes the label text to Summary.txt;
 
                 MessageBox.Show("Summary saved successfully.");
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Error saving summary: {ex.Message}");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
+
         }
 
         private void frmSummary_Load(object sender, EventArgs e)
         {
             Business business = new Business();
-            business.CountAge();
+            business.CountAge(); //extracts all the ages from each line and adds it.. method in business class
 
-            (int studentCount, int totalAge) = business.CountAge();
+            (int studentCount, int totalAge) = business.CountAge(); //returns the turple then store it in varas
             MessageBox.Show($"Total Students: {studentCount}, with Total Age: {totalAge}");
 
             try
             {
-                double Avg = totalAge / studentCount;
-                string date = DateTime.Now.ToString("D");
-                lblSummary.Text = $"There are {studentCount} records of students with an average age of {Avg}\n {studentCount}: Students ||\t Average Age: {Avg} \n {date} ";
+                double Avg = totalAge / studentCount; //calculation
+                string date = DateTime.Now.ToString("D"); //generates date of summary
+                lblSummary.Text = $"There are {studentCount} records of students with an average age of {Avg}\n {studentCount}: Students ||\t Average Age: {Avg} \n {date} "; //formatting the summary
             }
             catch (Exception ex)
             {

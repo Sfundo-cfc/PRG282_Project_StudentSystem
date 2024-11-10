@@ -39,7 +39,7 @@ namespace StudentManagementSystem
                 btnDelete.Visible = false;
                 btnRefresh.Visible = false;
 
-                string oldFirstName = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString(); // get the data from data grid view to a variable
+                string oldFirstName = dgvStudents.SelectedRows[0].Cells["FirstName"].Value.ToString(); // get the data from data grid view to a variable
                 string oldLastName = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString();
                 string oldAge = dgvStudents.SelectedRows[0].Cells["Age"].Value.ToString();
                 string oldCourse = dgvStudents.SelectedRows[0].Cells["Course"].Value.ToString();
@@ -54,7 +54,7 @@ namespace StudentManagementSystem
             }
             else
             {
-                MessageBox.Show("Please select ome student to update");
+                MessageBox.Show("Please select one student to update");
             }
 
 
@@ -192,25 +192,39 @@ namespace StudentManagementSystem
         {
             if (dgvStudents.SelectedRows.Count > 0)
             {
-                // Get the student data of the selected student from the DataGridView and strores in variables
-                string studentName = dgvStudents.SelectedRows[0].Cells["FirstName"].Value.ToString();
-                string studentSurname = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString();
-                string studentAge = dgvStudents.SelectedRows[0].Cells["Age"].Value.ToString();
-                string studentCourse = dgvStudents.SelectedRows[0].Cells["Course"].Value.ToString();
+                // Gets the selected row
+                var selectedRow = dgvStudents.SelectedRows[0];
 
+                // Checks if any cell in the selected row is null, indicating it's an empty row was thowing an erro
+                if (selectedRow.Cells["FirstName"].Value != null &&
+                    selectedRow.Cells["LastName"].Value != null &&
+                    selectedRow.Cells["Age"].Value != null &&
+                    selectedRow.Cells["Course"].Value != null)
+                {
+                    // Get the student data of the selected student from the DataGridView and store in variables
+                    string studentName = selectedRow.Cells["FirstName"].Value.ToString();
+                    string studentSurname = selectedRow.Cells["LastName"].Value.ToString();
+                    string studentAge = selectedRow.Cells["Age"].Value.ToString();
+                    string studentCourse = selectedRow.Cells["Course"].Value.ToString();
 
-                string fullStudentDetail = $"{studentName},{studentSurname},{studentAge},{studentCourse}"; // Format the full student detail to match the text file format
+                    string fullStudentDetail = $"{studentName},{studentSurname},{studentAge},{studentCourse}"; // Format the full student detail to match the text file format
 
-                Console.WriteLine(fullStudentDetail);
+                    Console.WriteLine(fullStudentDetail);
 
-                // Removes the student from the text file
-                handler.DeleteStudentRecord(fullStudentDetail);
+                    // Removes the student from the text file
+                    handler.DeleteStudentRecord(fullStudentDetail);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a valid student to delete.");
+                }
             }
             else
             {
                 MessageBox.Show("Please select a student to delete.");
             }
 
+            // refrshing the data grid
             dgvStudents.Columns.Clear();
             dgvStudents.Columns.Add("FirstName", "First Name");
             dgvStudents.Columns.Add("LastName", "Last Name");
@@ -219,15 +233,14 @@ namespace StudentManagementSystem
 
             foreach (var item in handler.GetAllStudents())
             {
-              
                 string[] fields = item.Split(',');
 
                 if (fields.Length == 4)
                 {
                     dgvStudents.Rows.Add(fields[0], fields[1], fields[2], fields[3]);
                 }
-        
             }
+
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

@@ -16,13 +16,13 @@ namespace PRG282_Project_StudentSystem.DataLayer
         string filePath = "students.txt";
         public void AddNewStudent(string studentDetails)
         {
-            File.AppendAllText(filePath, studentDetails + "\n");
+            File.AppendAllText(filePath, studentDetails + "\n"); // adds all text in file
             Console.WriteLine("Students successfully added to the records");
 
         }
-        public List<string> GetAllStudents()
+        public List<string> GetAllStudents() // returns the string list from the txt
         {
-            try
+            try // to avoid breaks
             {
                 return File.ReadAllLines(filePath).ToList();
             }
@@ -32,7 +32,7 @@ namespace PRG282_Project_StudentSystem.DataLayer
 
                 List<string> result = new List<string>();
                 result.Add("Cannot gathher all the students at this moment!");
-                return result;
+                return result;// problem so retuns empty list of results 
 
             }
 
@@ -42,43 +42,53 @@ namespace PRG282_Project_StudentSystem.DataLayer
         {
             try
             {
-                // Read all lines from the text file
-                List<string> students = File.ReadAllLines(filePath).ToList();
+                // prompt for user confirmation before deleting
+                DialogResult result = MessageBox.Show($"Are you sure you want to delete {fullStudentDetail} record?", "Confirm delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                // Check if the full student detail exists in the list
-                if (students.Contains(fullStudentDetail))
+
+                if (result == DialogResult.Yes) //test for yes from user
                 {
-                    students.Remove(fullStudentDetail); // Remove the exact match
+                    // Read all lines from the text file
+                    List<string> students = File.ReadAllLines(filePath).ToList();
 
-                    // Rewrite the updated list to the file
-                    File.WriteAllLines(filePath, students);
-                    MessageBox.Show("Student record deleted successfully.");
+                    // Check if the full student detail exists in the list
+                    if (students.Contains(fullStudentDetail))
+                    {
+                        students.Remove(fullStudentDetail); // Remove the exact match
+
+                        // Rewrite the updated list to the file
+                        File.WriteAllLines(filePath, students);
+                        MessageBox.Show("Student record deleted successfully.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Student not found in the file.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Student not found in the file.");
+                else 
+                { 
+                    MessageBox.Show("Delete aborted!");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while removing the student: " + ex.Message);
             }
+
         }
 
         public void FileUpdate(string oldRecord, string newRecord)
         {
             try
-            {
-                // Read all students from the text file into a list
-                List<string> students = File.ReadAllLines(filePath).ToList();
+            {  
+                List<string> students = File.ReadAllLines(filePath).ToList();// Reads all students from the text file into a list
 
-                // Find the index of the old student record
-                int index = students.IndexOf(oldRecord);
+               
+                int index = students.IndexOf(oldRecord);  // Find the index of the old student record
 
                 if (index != -1)
                 {
-                    // Replace the old record with the new record
-                    students[index] = newRecord;
+                    students[index] = newRecord; // Replace the old record with the new record at the index specified
 
                     // Write the updated list back to the text file
                     File.WriteAllLines(filePath, students);

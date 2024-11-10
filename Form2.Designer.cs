@@ -75,7 +75,7 @@
             this.btnAddToList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddToList.Location = new System.Drawing.Point(14, 335);
             this.btnAddToList.Name = "btnAddToList";
-            this.btnAddToList.Size = new System.Drawing.Size(123, 49);
+            this.btnAddToList.Size = new System.Drawing.Size(123, 59);
             this.btnAddToList.TabIndex = 10;
             this.btnAddToList.Text = "Add to list";
             this.btnAddToList.UseVisualStyleBackColor = false;
@@ -115,11 +115,11 @@
             // 
             this.btnAbort.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAbort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbort.Location = new System.Drawing.Point(349, 335);
+            this.btnAbort.Location = new System.Drawing.Point(338, 335);
             this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(126, 49);
+            this.btnAbort.Size = new System.Drawing.Size(137, 59);
             this.btnAbort.TabIndex = 6;
-            this.btnAbort.Text = "Abort To Menu";
+            this.btnAbort.Text = "Back To Menu";
             this.btnAbort.UseVisualStyleBackColor = false;
             this.btnAbort.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -138,7 +138,7 @@
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(176, 335);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(125, 49);
+            this.btnSave.Size = new System.Drawing.Size(125, 59);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save Details";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -212,6 +212,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Name = "frmAddStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ADD NEW STUDENT";
             ((System.ComponentModel.ISupportInitialize)(this.numAge)).EndInit();
             this.panel1.ResumeLayout(false);

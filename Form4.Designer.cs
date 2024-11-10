@@ -91,6 +91,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel3);
             this.Name = "frmSummary";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "STUDENT SUMMARY";
             this.Load += new System.EventHandler(this.frmSummary_Load);
             this.panel3.ResumeLayout(false);

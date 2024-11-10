@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManage));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnChanges = new System.Windows.Forms.Button();
             this.numFillAge = new System.Windows.Forms.NumericUpDown();
             this.cmbFillCourse = new System.Windows.Forms.ComboBox();
             this.txtFillLastName = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Course = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnChanges = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFillAge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
@@ -71,6 +71,18 @@
             this.panel2.Size = new System.Drawing.Size(896, 479);
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // btnChanges
+            // 
+            this.btnChanges.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChanges.Location = new System.Drawing.Point(707, 362);
+            this.btnChanges.Name = "btnChanges";
+            this.btnChanges.Size = new System.Drawing.Size(128, 61);
+            this.btnChanges.TabIndex = 15;
+            this.btnChanges.Text = "Save Changes";
+            this.btnChanges.UseVisualStyleBackColor = false;
+            this.btnChanges.Click += new System.EventHandler(this.btnChanges_Click);
             // 
             // numFillAge
             // 
@@ -213,18 +225,6 @@
             this.Course.Name = "Course";
             this.Course.Width = 125;
             // 
-            // btnChanges
-            // 
-            this.btnChanges.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChanges.Location = new System.Drawing.Point(707, 362);
-            this.btnChanges.Name = "btnChanges";
-            this.btnChanges.Size = new System.Drawing.Size(128, 61);
-            this.btnChanges.TabIndex = 15;
-            this.btnChanges.Text = "Save Changes";
-            this.btnChanges.UseVisualStyleBackColor = false;
-            this.btnChanges.Click += new System.EventHandler(this.btnChanges_Click);
-            // 
             // frmManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -232,6 +232,7 @@
             this.ClientSize = new System.Drawing.Size(896, 479);
             this.Controls.Add(this.panel2);
             this.Name = "frmManage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Managing Student Details";
             this.Load += new System.EventHandler(this.frmManage_Load);
             this.panel2.ResumeLayout(false);

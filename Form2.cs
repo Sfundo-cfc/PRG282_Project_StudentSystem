@@ -42,30 +42,30 @@ namespace PRG282_Project_StudentSystem
             if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(surname) && string.IsNullOrWhiteSpace(cmbCourse.Text))
             {
                 MessageBox.Show("All fields are required, please fill in", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Warning); // shows an error message warning the user 
-                lsbStudentDetails.Items.Clear();
+              
             }
             else if (string.IsNullOrWhiteSpace(name))
             {
                 MessageBox.Show("Name is a mandotory field", "Please enter name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtName.Focus();
-                lsbStudentDetails.Items.Clear();
+              
             }
             else if (string.IsNullOrWhiteSpace(surname))
             {
                 MessageBox.Show("Surname is a mandotory field", "Please enter surname", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSurname.Focus();
-                lsbStudentDetails.Items.Clear();
+
             }
             else if (age < 18 || age > 60)
             {
                 MessageBox.Show("Invalid age for a university student, age must be between 18 and 59!");
-                lsbStudentDetails.Items.Clear();
+               
             }
             else if (cmbCourse.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a course.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cmbCourse.Focus();
-                lsbStudentDetails.Items.Clear();
+               
             }
             else
             {

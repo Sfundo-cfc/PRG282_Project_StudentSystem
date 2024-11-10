@@ -254,11 +254,14 @@ namespace StudentManagementSystem
 
             foreach (var item in handler.GetAllStudents())
             {
-
+               
                 string[] fields = item.Split(',');
 
-                 
-
+                if (fields.Length == 4)
+                {
+                    dgvStudents.Rows.Add(fields[0], fields[1], fields[2], fields[3]);
+                }
+            
             }
         }
     }

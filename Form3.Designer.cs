@@ -190,11 +190,11 @@
             this.LastName,
             this.Age,
             this.Course});
-            this.dgvStudents.Location = new System.Drawing.Point(49, 85);
+            this.dgvStudents.Location = new System.Drawing.Point(25, 83);
             this.dgvStudents.Name = "dgvStudents";
             this.dgvStudents.RowHeadersWidth = 51;
             this.dgvStudents.RowTemplate.Height = 24;
-            this.dgvStudents.Size = new System.Drawing.Size(554, 270);
+            this.dgvStudents.Size = new System.Drawing.Size(608, 270);
             this.dgvStudents.TabIndex = 5;
             // 
             // FirstName

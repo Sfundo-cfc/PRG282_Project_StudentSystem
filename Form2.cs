@@ -69,7 +69,7 @@ namespace PRG282_Project_StudentSystem
             }
             else
             {
-                // All validations passed then proceeds to add the student details
+                // If validations passed then proceeds to add the student details
                 string course = cmbCourse.SelectedItem.ToString();
                 string studentDetails = $"{name}, {surname}, {age}, {course}"; // formats the data to be comma separated
 

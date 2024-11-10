@@ -18,7 +18,7 @@ namespace PRG282_Project_StudentSystem.BusinessLogic
 
             try // avoid any errors
             {
-                if (!File.Exists(filePath)) // testing for path 
+                if (!File.Exists(filePath)) // checking file path
                 {
                     MessageBox.Show("File not found.");
 

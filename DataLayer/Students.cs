@@ -8,7 +8,8 @@ namespace PRG282_Project_StudentSystem.DataLayer
 {
     internal class Students
     {
-                     public string Name { get; set; }
+             public string Name { get; set; }
+        
              public string LastName { get; set; }
             
              public int StudentId { get; set; }

@@ -17,27 +17,27 @@ namespace PRG282_Project_StudentSystem.BusinessLogic
             
             int totalAge = 0;
 
-            try // avoid any errors
+            try // avoid any errors.
             {
-                if (!File.Exists(filePath)) // checking file path
+                if (!File.Exists(filePath)) // checking file path.
                 {
                     MessageBox.Show("File not found.");
 
                     return (studentCount, totalAge);
                 }
 
-                // Read all lines from the file
+                // Read all lines from the file.
                 string[] studentLines = File.ReadAllLines(filePath);
 
                 foreach (string line in studentLines)
                 {
-                    string[] fields = line.Split(','); //uses comma to split the line of student data and store as array 
+                    string[] fields = line.Split(','); //uses comma to split the line of student data and store as array.
 
-                    if (fields.Length >= 3 && int.TryParse(fields[2], out int age)) //gets the age at index 2
+                    if (fields.Length >= 3 && int.TryParse(fields[2], out int age)) //gets the age at index 2.
                     {
                        
-                        studentCount++;  // Increments the student count 
-                        totalAge += age; //add age to totalAge
+                        studentCount++;  // Increments the student count.
+                        totalAge += age; //add age to total age.
                     }
                 }
             }
@@ -46,7 +46,7 @@ namespace PRG282_Project_StudentSystem.BusinessLogic
                 MessageBox.Show($"Error the accessing file: {ex.Message}");
             }
 
-            return (studentCount, totalAge); // will still return the unassigned variables .. was a problem
+            return (studentCount, totalAge); // will still return the unassigned variables .. was a problem.
         }
 
 

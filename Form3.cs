@@ -28,7 +28,7 @@ namespace StudentManagementSystem
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvStudents.SelectedRows.Count > 0)
+            if (dgvStudents.SelectedRows.Count == 1) // test if a row is selected and only one row at a time
             {
                 txtFillName.Visible = true;
                 txtFillLastName.Visible = true;
@@ -39,14 +39,14 @@ namespace StudentManagementSystem
                 btnDelete.Visible = false;
                 btnRefresh.Visible = false;
 
-                string oldFirstName = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString();
+                string oldFirstName = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString(); // get the data from data grid view to a variable
                 string oldLastName = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString();
                 string oldAge = dgvStudents.SelectedRows[0].Cells["Age"].Value.ToString();
                 string oldCourse = dgvStudents.SelectedRows[0].Cells["Course"].Value.ToString();
 
        
 
-                // Get updated data from the input fields
+                // Get updated data from the input boxes
                txtFillName.Text =oldFirstName;
                txtFillLastName.Text=oldLastName;
                numFillAge.Value=int.Parse(oldAge);
@@ -54,7 +54,7 @@ namespace StudentManagementSystem
             }
             else
             {
-                MessageBox.Show("Please select a student to update");
+                MessageBox.Show("Please select ome student to update");
             }
 
 
@@ -67,16 +67,16 @@ namespace StudentManagementSystem
             dgvStudents.Columns.Add("Age", "Age");
             dgvStudents.Columns.Add("Course", "Course");
 
-            foreach (var item in handler.GetAllStudents())
+            foreach (var item in handler.GetAllStudents()) 
             {
-                // Assuming item is formatted as "FirstName,LastName,Age,Course"
+                //separating by a comma the list returned from GetallStudents to store in an array
                 string[] fields = item.Split(',');
 
-                if (fields.Length == 4)
+                if (fields.Length == 4) 
                 {
                     dgvStudents.Rows.Add(fields[0], fields[1], fields[2], fields[3]);
                 }
-                // dgvStudents.Rows.Add(item);
+                // dgvStudents.Rows.Add(item); displays one column with all the data 
             }
         }
 
@@ -114,22 +114,22 @@ namespace StudentManagementSystem
             cmbFillCourse.Visible = false;
             numFillAge.Visible = false;
 
-            // Retrieve the current details of the selected student from the DataGridView
+            // shows the selected details of the selected student from the DataGridView
             string oldFirstName = dgvStudents.SelectedRows[0].Cells["FirstName"].Value.ToString();
             string oldLastName = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString();
             string oldAge = dgvStudents.SelectedRows[0].Cells["Age"].Value.ToString();
             string oldCourse = dgvStudents.SelectedRows[0].Cells["Course"].Value.ToString();
 
-            // Construct the old record
-            string oldRecord = $"{oldFirstName},{oldLastName},{oldAge},{oldCourse}";
 
-            // Get updated data from the input fields
+            string oldRecord = $"{oldFirstName},{oldLastName},{oldAge},{oldCourse}";  // Construct the old record
+
+            // Get updated data from the input boxes
             string newFirstName = txtFillName.Text;
             string newLastName = txtFillLastName.Text;
             int newAge = (int)numFillAge.Value;
             string newCourse = cmbFillCourse.Text;
 
-            // Validation checks
+            // Validation 
             if (string.IsNullOrWhiteSpace(newFirstName))
             {
                 MessageBox.Show("First name is required.", "Validation Error, Try Aggain", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -155,18 +155,19 @@ namespace StudentManagementSystem
                 return;
             }
 
-            // Construct the new record
+            // Constructs the new record
             string newRecord = $"{newFirstName},{newLastName},{newAge},{newCourse}";
 
-            // Update the DataGridView with the new values
+            // Updating the DataGridView with the new values
             dgvStudents.SelectedRows[0].Cells["FirstName"].Value = newFirstName;
             dgvStudents.SelectedRows[0].Cells["LastName"].Value = newLastName;
             dgvStudents.SelectedRows[0].Cells["Age"].Value = newAge.ToString();
             dgvStudents.SelectedRows[0].Cells["Course"].Value = newCourse;
 
-            // Update the text file
-            handler.FileUpdate(oldRecord, newRecord);
+           
+            handler.FileUpdate(oldRecord, newRecord);  // Updating the text file
 
+            //clears the data grid and regenerates with new info or update
             dgvStudents.Columns.Clear();
             dgvStudents.Columns.Add("FirstName", "First Name");
             dgvStudents.Columns.Add("LastName", "Last Name");
@@ -175,14 +176,14 @@ namespace StudentManagementSystem
 
             foreach (var item in handler.GetAllStudents())
             {
-                // Assuming item is formatted as "FirstName,LastName,Age,Course"
+               
                 string[] fields = item.Split(',');
 
                 if (fields.Length == 4)
                 {
                     dgvStudents.Rows.Add(fields[0], fields[1], fields[2], fields[3]);
                 }
-                // dgvStudents.Rows.Add(item);
+            
             }
         }
 
@@ -191,20 +192,18 @@ namespace StudentManagementSystem
         {
             if (dgvStudents.SelectedRows.Count > 0)
             {
-                // Get the name, surname, age, and course of the selected student from the DataGridView
+                // Get the student data of the selected student from the DataGridView and strores in variables
                 string studentName = dgvStudents.SelectedRows[0].Cells["FirstName"].Value.ToString();
                 string studentSurname = dgvStudents.SelectedRows[0].Cells["LastName"].Value.ToString();
                 string studentAge = dgvStudents.SelectedRows[0].Cells["Age"].Value.ToString();
                 string studentCourse = dgvStudents.SelectedRows[0].Cells["Course"].Value.ToString();
 
-                // Format the full student detail to match the text file format
 
-
-                string fullStudentDetail = $"{studentName},{studentSurname},{studentAge},{studentCourse}";
+                string fullStudentDetail = $"{studentName},{studentSurname},{studentAge},{studentCourse}"; // Format the full student detail to match the text file format
 
                 Console.WriteLine(fullStudentDetail);
 
-                // Remove the student from the text file
+                // Removes the student from the text file
                 handler.DeleteStudentRecord(fullStudentDetail);
             }
             else
@@ -220,14 +219,14 @@ namespace StudentManagementSystem
 
             foreach (var item in handler.GetAllStudents())
             {
-                // Assuming item is formatted as "FirstName,LastName,Age,Course"
+              
                 string[] fields = item.Split(',');
 
                 if (fields.Length == 4)
                 {
                     dgvStudents.Rows.Add(fields[0], fields[1], fields[2], fields[3]);
                 }
-                // dgvStudents.Rows.Add(item);
+        
             }
         }
 
@@ -241,14 +240,14 @@ namespace StudentManagementSystem
 
             foreach (var item in handler.GetAllStudents())
             {
-                // Assuming item is formatted as "FirstName,LastName,Age,Course"
+               
                 string[] fields = item.Split(',');
 
                 if (fields.Length == 4)
                 {
                     dgvStudents.Rows.Add(fields[0], fields[1], fields[2], fields[3]);
                 }
-                // dgvStudents.Rows.Add(item);
+            
             }
         }
     }

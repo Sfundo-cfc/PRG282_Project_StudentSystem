@@ -43,7 +43,7 @@ namespace PRG282_Project_StudentSystem.BusinessLogic
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error accessing file: {ex.Message}");
+                MessageBox.Show($"Error the accessing file: {ex.Message}");
             }
 
             return (studentCount, totalAge); // will still return the unassigned variables .. was a problem
